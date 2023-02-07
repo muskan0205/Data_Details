@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Data_Details.Models.CommonProperties
+@{
+    ViewData["Title"] = "Login Page";
+}
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        @*<div class="card text-black" style="border-radius: 50px;">*@
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form action="@Url.Action( "login","Signup")" method="post">
+                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">LOG IN</p>
+
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        @Html.TextBoxFor(m => m.EmailID, "Email ID", new { @class = "form-control" })
+                        @Html.LabelFor(m => m.EmailID, new { @class = "form-label" })
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        @Html.TextBoxFor(m => m.Password, "Password", new { @class = "form-control" })
+                        @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    </div>
+
+
+                    <!-- Checkbox -->
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+
+                        <input type="submit" value="login" class="btn btn-primary btn-lg" />
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
