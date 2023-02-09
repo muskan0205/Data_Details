@@ -83,8 +83,10 @@ namespace Data_Details.Controllers
 
                 connection.Open();
 
+          
                 var LoginResult = connection.ExecuteScalar("sp_Login", parameters, commandType: CommandType.StoredProcedure).ToString();
                 
+
                 connection.Close();
                 // Check if the stored procedure was successful
                 if (LoginResult == "Successful Login")
@@ -103,6 +105,7 @@ namespace Data_Details.Controllers
                     else if (role == "Admin")
                     {
                         connection.Close();
+
                         return Ok("Admin");
                     }
                     else
@@ -112,9 +115,9 @@ namespace Data_Details.Controllers
                     // Call sp_GetRole to get the user's role
                     // var role = connection.ExecuteScalar("sp_GetRole", parameters, commandType: CommandType.StoredProcedure);
 
-                    connection.Close();
+                    
                     // Return the role as part of the response
-                    return Ok();
+                   
                 }
                 else
                 {

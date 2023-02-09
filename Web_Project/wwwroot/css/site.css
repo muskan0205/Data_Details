@@ -87,3 +87,15 @@ body {
         height: 100%;
     }
 }
+.toggle-password div {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.toggle-password i {
+        color: black;
+        font-size: 18px;
+}

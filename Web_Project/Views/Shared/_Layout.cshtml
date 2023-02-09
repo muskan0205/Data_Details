@@ -10,7 +10,9 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            
             <div class="container">
+            
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Web_Project</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -25,8 +27,42 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Signup" asp-action="SignUp">SignUP</a>
                         </li>
                         <li class="nav-item">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Signup" asp-action="login">LOGIN</a>
-                         </li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Signup" asp-action="login">LOGIN</a>
+                        </li>
+
+                        @if (Convert.ToBoolean(TempData["Employee"]) == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee_" asp-action="Index">Employee</a>
+                            </li>
+
+                        }
+
+                        else if (Convert.ToBoolean(TempData["Custormer"]) == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Custormer</a>
+                            </li>
+                        }
+                        else if (Convert.ToBoolean(TempData["Admin"]) == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee_" asp-action="Index">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Custormer</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee_" asp-action="Index">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Custormer</a>
+                            </li>
+
+                        }
                     </ul>
                 </div>
             </div>

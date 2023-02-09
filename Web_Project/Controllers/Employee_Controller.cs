@@ -40,6 +40,7 @@ namespace Web_Project.Controllers
             //}
             return View(data);
 
+
         }
         public IActionResult Create()
         {

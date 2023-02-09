@@ -34,6 +34,8 @@ namespace Web_Project.Service
             var request = new RestRequest("https://localhost:44387/api/Sign/Signup", Method.Post);
             request.AddJsonBody(signUpData);
 
+            
+
             return _client.Execute(request);
 
         }
