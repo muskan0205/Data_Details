@@ -1,0 +1,100 @@
+﻿@model Data_Details.Models.customerDataModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    TempData["Custormer"] = true;
+}
+
+@if (TempData["error-message-71"] != null)
+{
+    <div id="error-message-71" class="alert alert-danger">
+        @TempData["error-message-71"].ToString()
+    </div>
+}
+@if (TempData["error-message-72"] != null)
+{
+    <div id="error-message-72" class="alert alert-danger">
+        @TempData["error-message-72"].ToString()
+    </div>
+}
+@if (TempData["error-message-73"] != null)
+{
+    <div id="error-message-73" class="alert alert-danger">
+        @TempData["error-message-73"].ToString()
+    </div>
+}
+@if (TempData["error-message-74"] != null)
+{
+    <div id="error-message-74" class="alert alert-danger">
+        @TempData["error-message-74"].ToString()
+    </div>
+}
+<h1>Create</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="id" class="control-label">ID</label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="First_name" class="control-label">First Name</label>
+                <input asp-for="First_name" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed."/>
+                <span asp-validation-for="First_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Last_name" class="control-label">Last Name</label>
+                <input asp-for="Last_name" class="form-control" required  data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed."/>
+                <span asp-validation-for="Last_name" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="gender" class="control-label"></label>
+                    <input asp-for="gender" class="form-control" required />
+                    <span asp-validation-for="gender" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <div>
+                    <label>
+                        <input type="radio" asp-for="gender" value="Male" />
+                        Male
+                    </label>
+
+                    <label>
+                        <input type="radio" asp-for="gender" value="Female" />
+                        Female
+                    </label>
+                </div>
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product_name" class="control-label">Product Name</label>
+                <input asp-for="Product_name" class="form-control" required />
+                <span asp-validation-for="Product_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Product Price</label>
+                <input asp-for="Price" type="number" min="1" class="form-control" required />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

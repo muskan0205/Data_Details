@@ -41,8 +41,8 @@ namespace Data_Details.Controllers
         public async Task<ActionResult<List<EmployeeDataModel>>> CreateResult(customerDataModel customer)
         {
             using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("SET IDENTITY_INSERT employee_data ON");
-            await connection.ExecuteAsync("insert into custormer_data( [First_name],[Last_name],[gender],[Product_name].[Price])values(@First_name,@Last_name ,@gender,@Product_name,@Price)", customer);
+            await connection.ExecuteAsync("SET IDENTITY_INSERT custormer_data ON");
+            await connection.ExecuteAsync("insert into custormer_data( [First_name],[Last_name],[gender],[Product_name],[Price])values(@First_name,@Last_name ,@gender,@Product_name,@Price)", customer);
             // await connection.ExecuteAsync("SET IDENTITY_INSERT employee_data OFF");
             return Ok(await Select_Result(connection));
         }
@@ -51,7 +51,7 @@ namespace Data_Details.Controllers
         public async Task<ActionResult<List<customerDataModel>>> UpdateResult(customerDataModel customer)
         {
             using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("update custormer_data set id=@id ,First_name=@First_name,Last_name=@Last_name ,gender=@gender,@Product_name=Product_name,@Price=Price where id = @id", customer);
+            await connection.ExecuteAsync("update custormer_data set First_name=@First_name,Last_name=@Last_name ,gender=@gender,Product_name=@Product_name,Price=@Price where id = @id", customer);
             return Ok(await Select_Result(connection));
         }
 

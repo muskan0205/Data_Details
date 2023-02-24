@@ -4,6 +4,25 @@
     ViewData["Title"] = "Customer";
 }
 
+@if (TempData["Success-Message-4"] != null)
+{
+    <div id="Success-Message-4" class="alert alert-success">@TempData["Success-Message-4"].ToString()</div>
+}
+
+@if (TempData["Success-Message-71"] != null)
+{
+    <div id="Success-Message-71" class="alert alert-success">@TempData["Success-Message-71"].ToString()</div>
+}
+@if (TempData["Success-Message-81"] != null)
+{
+    <div id="Success-Message-81" class="alert alert-success">@TempData["Success-Message-81"].ToString()</div>
+}
+
+@if (TempData["Success-Message-91"] != null)
+{
+    <div id="Success-Message-91" class="alert alert-success">@TempData["Success-Message-91"].ToString()</div>
+}
+
 
 <h1>Custormer Detail</h1>
 
@@ -13,23 +32,23 @@
 <table class="table">
     <thead>
         <tr>
+            @*<th>
+                    ID
+                </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.id)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First_name)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Last_name)
+                Gender
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.gender)
+                Product Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Product Price
             </th>
             <th></th>
         </tr>
@@ -38,9 +57,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.First_name)
                 </td>
@@ -57,9 +76,9 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
                 </td>
             </tr>
         }

@@ -1,37 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
 @model Data_Details.Models.CommonProperties
 @{
     ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_login-singup.cshtml";
+
 }
 
-@if (TempData["ErrorMessage"] != null)
+@if (TempData["error-message-15"] != null)
 {
-    <div id="errorMessage" class="alert alert-danger">
-        @TempData["ErrorMessage"]
+    <div id="error-message-15" class="alert alert-danger">
+        @TempData["error-message"].ToString()
     </div>
 }
-@if (TempData["SuccessMessage"] != null)
+@if (TempData["error-message-16"] != null)
 {
-    <div id="successMessage" class="alert alert-success">
-        @TempData["SuccessMessage"]
+    <div id="error-message-16" class="alert alert-danger">
+        @TempData["error-message"].ToString()
     </div>
 }
-
+@if (TempData["error-message-17"] != null)
+{
+    <div id="error-message-17" class="alert alert-danger">
+        @TempData["error-message-17"].ToString()
+    </div>
+}
+@if (TempData["Success-Message-1"] != null)
+{
+    <div id="Success-Message-1" class="alert alert-success">
+        @TempData["Success-Message-1"]
+    </div>
+}
 <head>
     <link rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="~/js/site.js"></script>
 
-
-    <script type="text/javascript" src="~/js/site.js"></script>
+    
 </head>
 <section class="vh-100">
     <div class="container-fluid h-custom">
@@ -42,27 +48,32 @@
                      class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form action="@Url.Action( "Login","Signup")" method="post">
-                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">LOG IN</p>
+                <form class="mx-1 mx-md-4" id="" asp-action="login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*<div class="form-group">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" required />
+                    <span asp-validation-for="id" class="text-danger" id="id-validation-1">
 
-                    </div>
-                    <!-- Email input -->
+                    </span>
+                </div>*@
+
+
+
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                            <i class="fas fa-envelope "></i>  @Html.LabelFor(m => m.EmailID, "Email ID", new { @class = "form-label" })
-                            <input class="form-control" type="text" id="EmailID" name="EmailID" onclick="validateEmail()" @(Model.EmailID) required>
-                            <div class="invalid-feedback" id="emailError"></div>
-                            @*@Html.TextBoxFor(m => m.EmailID, new { @class = "form-control" })*@
+                            <label asp-for="EmailID" class="control-label"> <i class="fas fa-envelope "></i> Email ID</label>
+                            <input asp-for="EmailID" type="email" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed. " />
+                            <span asp-validation-for="EmailID" class="text-danger" id="id-validation-5"></span>
 
                         </div>
                     </div>
+
                     <div class="d-flex flex-row align-items-center mb-4">
-
                         <div class="form-outline flex-fill mb-0">
-                            @Html.LabelFor(m => m.Password, "Password", new { @class = "form-label" })
-                            <input class="form-control" type="password" id="password" name="Password" @(Model.Password) required />
-
+                            <label asp-for="Password" class="control-label">Password</label>
+                            <input asp-for="Password" type="password" id="password" name="Password" class="form-control" required />
+                            <span asp-validation-for="Password" class="text-danger"></span>
                             <div class="toggle-password" onclick="togglePassword()">
                                 <i class="fa fa-eye"></i>
                             </div>
@@ -71,17 +82,40 @@
 
 
 
+                    <div class="form-group">
+                        <label class="control-label">Select Role</label>
+                        <div>
+                            <label>
+                                <input type="radio" asp-for="role" value="Employee" />
+                                Employee
+                            </label>
 
-                    <!-- Checkbox -->
+                            <label>
+                                <input type="radio" asp-for="role" value="Customer" />
+                                Customer
+                            </label>
+                            <label>
+                                <input type="radio" asp-for="role" value="Admin" />
+                                Admin
+                            </label>
+
+                            <span asp-validation-for="role" class="text-danger"></span>
+                        </div>
+
+                    </div>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 
                         <input type="submit" value="login" class="btn btn-primary btn-lg" />
 
                     </div>
-
                 </form>
             </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+            }
         </div>
     </div>
 

@@ -7,125 +7,224 @@
 @model Data_Details.Models.SignUp
 @{
     ViewData["Title"] = "Signup Page";
-}
+    Layout = "~/Views/Shared/_login-singup.cshtml";
 
-<head>
+}
+<html>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="~/js/site.js"></script>
 
+   
 
-    <script type="text/javascript" src="~/js/site.js"></script>
-</head>
-@if (TempData["Message"] != null)
-{
-    <div class="alert alert-success">@TempData["Message"].ToString()</div>
-}
-@if (TempData["ErrorMessage"] != null)
-{
-    <div id="errorMessage" class="alert alert-danger">
-        @TempData["ErrorMessage"]
-    </div>
-}
+    @if (TempData["error-message-1"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-1"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-2"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-2"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-3"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-3"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-4"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-4"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-5"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-5"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-6"] != null)
+    {
+        <div id="error-message-1" class="alert alert-danger">
+            @TempData["error-message-6"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-7"] != null)
+    {
+        <div id="error-message-7" class="alert alert-danger">
+            @TempData["error-message-7"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-8"] != null)
+    {
+        <div id="error-message-8" class="alert alert-danger">
+            @TempData["error-message-8"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-9"] != null)
+    {
+        <div id="error-message-9" class="alert alert-danger">
+            @TempData["error-message-9"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-10"] != null)
+    {
+        <div id="error-message-10" class="alert alert-danger">
+            @TempData["error-message-10"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-11"] != null)
+    {
+        <div id="error-message-7" class="alert alert-danger">
+            @TempData["error-message-11"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-12"] != null)
+    {
+        <div id="error-message-7" class="alert alert-danger">
+            @TempData["error-message-12"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-13"] != null)
+    {
+        <div id="error-message-7" class="alert alert-danger">
+            @TempData["error-message-13"].ToString()
+        </div>
+    }
+    @if (TempData["error-message-14"] != null)
+    {
+        <div id="error-message-7" class="alert alert-danger">
+            @TempData["error-message-14"].ToString()
+        </div>
+    }
 
+    @if (TempData["Success-Message-1"] != null)
+    {
+        <div id="Success-Message-1" class="alert alert-success">@TempData["Success-Message"].ToString()</div>
+    }
 
-<section class="vh-500" style="background-color: #fff;">
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-12 col-xl-11">
-                <div class="card text-black" style="border-radius: 25px;">
-                    <div class="card-body p-md-5">
-                        <div class="row justify-content-center">
-                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">SIGN UP</p>
-                                <form class="mx-1 mx-md-4" action="@Url.Action("SignUp", "Signup")" method="post">
-                                    <div class="d-flex flex-row align-items-center mb-4">
+    <section class="vh-500" style="background-color: #fff;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">SIGN UP</p>
+                                    @*<div class="row">
+                                        <div class="col-md-4">*@
+                                    <form class="mx-1 mx-md-4" id="" asp-action="SignUp">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        @*<div class="form-group">
+                                                <label asp-for="id" class="control-label"></label>
+                                                <input asp-for="id" class="form-control" required />
+                                                <span asp-validation-for="id" class="text-danger" id="id-validation-1">
 
-                                        <div class="form-outline flex-fill mb-0">
-                                            <i class="fas fa-user "></i> @Html.LabelFor(m => m.First_name, "First Name", new { @class = "form-label" })
-                                            @*validation message pass*@
-                                            <input class="form-control" type="text" id="First_name" name="First_name" @(Model.First_name) required>
+                                                </span>
+                                            </div>*@
 
-
-
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-
-                                        <div class="form-outline flex-fill mb-0">
-                                            <i class="fas fa-user "></i> @Html.LabelFor(m => m.Last_name, "Last Name", new { @class = "form-label" })
-                                            <input class="form-control" type="text" id="Last_name" name="Last_name" @(Model.Last_name) required>
-                                            @*@Html.TextBoxFor(m => m.Last_name, new { @class = "form-control" })*@
-
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <div class="form-outline flex-fill mb-0">
-                                            <i class="fas fa-envelope "></i>  @Html.LabelFor(m => m.EmailID, "Email ID", new { @class = "form-label" })
-                                            <input class="form-control" type="text" id="EmailID" name="EmailID" onclick="validateEmail()" @(Model.EmailID) required>
-                                            <div class="invalid-feedback" id="emailError"></div>
-                                            @*@Html.TextBoxFor(m => m.EmailID, new { @class = "form-control" })*@
-
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
-
-                                        <div class="form-outline flex-fill mb-0">
-                                            @Html.LabelFor(m => m.Password, "Password", new { @class = "form-label" })
-                                            <input class="form-control" type="password" id="password" name="Password" @(Model.Password) required />
-
-                                            <div class="toggle-password" onclick="togglePassword()">
-                                                <i class="fa fa-eye"></i>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label asp-for="First_name" class="control-label"><i class="fas fa-user "></i> First Name</label>
+                                                <input asp-for="First_name" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed." />
+                                                <span asp-validation-for="First_name" class="text-danger" id="id-validation-2"></span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
 
-                                        <div class="form-outline flex-fill mb-0">
-                                            @Html.LabelFor(m => m.Confirm_Password, "Confirm Password", new { @class = "form-label" })
-                                            <input class="form-control" type="password" id="Confirm_Password" name="Confirm_Password" @(Model.Confirm_Password) required>
-
-                                            <div class="toggle-password" onclick="toggleConfirm_Password()">
-                                                <i class="fa fa-eye"></i>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label asp-for="Last_name" class="control-label"><i class="fas fa-user "></i> Last Name</label>
+                                                <input asp-for="Last_name" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed. " />
+                                                <span asp-validation-for="Last_name" class="text-danger" id="id-validation-3"></span>
                                             </div>
-                                            @*@Html.PasswordFor(m => m.Confirm_Password, new { @class = "form-control" })*@
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label asp-for="EmailID" class="control-label"> <i class="fas fa-envelope "></i> Email ID</label>
+                                                <input asp-for="EmailID" type="email" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed. " />
+                                                <span asp-validation-for="EmailID" class="text-danger" id="id-validation-5"></span>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label asp-for="Password" class="control-label">Password</label>
+                                                <input asp-for="Password" type="password" id="password" name="Password" class="form-control" required />
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                                @*<div class="toggle-password" onclick="togglePassword()">
+                                                    <i class="fa fa-eye"></i>
+                                                </div>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label asp-for="Confirm_Password" class="control-label">Confirm Password</label>
+                                                <input asp-for="Confirm_Password" type="password" id="Confirm_Password" name="Confirm_Password" class="form-control" required />
+                                                <span asp-validation-for="Confirm_Password" class="text-danger"></span>
+                                                @*<div class="toggle-password" onclick="toggleConfirm_Password()">
+                                                    <i class="fa fa-eye"></i>
+                                                </div>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Select Role</label>
+                                            <div>
+                                                <label>
+                                                    <input type="radio" asp-for="role" value="Employee" />
+                                                    Employee
+                                                </label>
+
+                                                <label>
+                                                    <input type="radio" asp-for="role" value="Customer" />
+                                                    Customer
+                                                </label>
+                                                <label>
+                                                    <input type="radio" asp-for="role" value="Admin" />
+                                                    Admin
+                                                </label>
+
+                                                <span asp-validation-for="role" class="text-danger"></span>
+                                            </div>
 
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-6 mb-4">
-                                        <h6 class="mb-2 pb-1"> Select Role </h6>
-
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" id="Employee" name="role" value="Employee" @(Model.role == "Employee" ? "checked" : "") />
-                                            <label for="Employee">Employee</label>
-
-                                            <input type="radio" id="Custormer" name="role" value="Custormer" @(Model.role == "Custormer" ? "checked" : "") />
-                                            <label for="Custormer">Custormer</label>
-
-                                            <input type="radio" id="Admin" name="role" value="Admin" @(Model.role == "Admin" ? "checked" : "") />
-                                            <label for="Admin">Admin</label>
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <input type="submit" value="Register" id="submitButton" class="btn btn-primary btn-lg" />
                                         </div>
-                                    </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                         class="img-fluid" alt="Sample image">
 
-                                        <input type="submit" value="Register" id="submitButton" class="btn btn-primary btn-lg" />
-
-                                    </div>
-                                </form>
-
+                                </div>
                             </div>
-                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                     class="img-fluid" alt="Sample image">
-
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    }
+</body>
+</html>
+

@@ -54,16 +54,15 @@ namespace Data_Details.Controllers
         public async Task<ActionResult<List<EmployeeDataModel>>> UpdateResult(EmployeeDataModel employee)
         {
             using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("update employee_data set id=@id ,First_name=@First_name,Last_name=@Last_name ,gender=@gender,Salary=@Salary where id = @id", employee);
+            await connection.ExecuteAsync("update employee_data set First_name=@First_name,Last_name=@Last_name ,gender=@gender,Salary=@Salary where id = @id", employee);
             return Ok(await SelectResult(connection));
         }
 
-        [HttpDelete("{employeeid}")]
+        [HttpDelete ("{employeeid}")]
         public async Task<ActionResult<List<EmployeeDataModel>>> DeleteResultByID(int employeeid)
         {
             using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-            var Book = await connection.QueryFirstAsync<EmployeeDataModel>("Delete from employee_data where id = @id",
-                new { id = employeeid });
+            var Book = await connection.QueryFirstAsync<EmployeeDataModel>("Delete from employee_data where id = @id", new { id = employeeid });
             return Ok(await SelectResult(connection));
 
         }

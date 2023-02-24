@@ -1,11 +1,48 @@
 ﻿@model IEnumerable<Data_Details.Models.EmployeeDataModel>
 @*@{
-    Layout = ViewBag.Layout;
-}*@
+        Layout = ViewBag.Layout;
+    }*@
+
+@*@{TempData["Admin"] = true; }*@
+
+<head>
+    <script src="~/js/site.js"></script>
+</head>
 
 @{
     ViewData["Title"] = "Employee";
 }
+@if (TempData["Success-Message-3"] != null)
+{
+    <div id="Success-Message-3" class="alert alert-success">@TempData["Success-Message-3"].ToString()</div>
+}
+
+@if (TempData["Success-Message-11"] != null)
+{
+    <div id="Success-Message-11" class="alert alert-success">@TempData["Success-Message-11"].ToString()</div>
+}
+
+@if (TempData["Success-Message-21"] != null)
+{
+    <div id="Success-Message-21" class="alert alert-success">@TempData["Success-Message-21"].ToString()</div>
+}
+
+@if (TempData["Success-Message-41"] != null)
+{
+    <div id="Success-Message-41" class="alert alert-success">@TempData["Success-Message-41"].ToString()</div>
+}
+
+
+
+@if (TempData["error-message-15"] != null)
+{
+    <div id="error-message-15" class="alert alert-danger">
+        @TempData["error-message-15"].ToString()
+    </div>
+}
+
+
+
 
 <h1>Employee Details</h1>
 
@@ -15,20 +52,20 @@
 <table class="table">
     <thead>
         <tr>
+            @*<th>
+                    ID
+                </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.id)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First_name)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Last_name)
+                Gender
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salary)
+                Salary
             </th>
             <th></th>
         </tr>
@@ -37,9 +74,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.First_name)
                 </td>
@@ -53,9 +90,9 @@
                     @Html.DisplayFor(modelItem => item.Salary)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
                 </td>
             </tr>
         }

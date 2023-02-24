@@ -65,13 +65,19 @@ namespace Web_Project.Service
             RestResponse response = _client.Execute(request);
             return response;
         }
-        public async Task<HttpResponseMessage> GetEmployee(int id)
+        public  RestResponse GetEmployee(int employeeid)
         {
-            using var client = new HttpClient();
-            var response = await client.GetAsync($"https://localhost:44387/api/Employee/{id}");
-
+            RestRequest request = new RestRequest("https://localhost:44387/api/Employee/{employeeid}");
+            RestResponse response = _client.Execute(request);
             return response;
         }
+        //public async Task<HttpResponseMessage> GetEmployee(int employeeid)
+        //{
+        //    using var client = new HttpClient();
+        //    var response = await client.GetAsync($"https://localhost:44387/api/Employee/{employeeid}");
+
+        //    return response;
+        //}
         public async Task<HttpResponseMessage> CreateEmployee(Data_Details.Models.EmployeeDataModel model)
         {
             using var client = new HttpClient();
@@ -83,30 +89,88 @@ namespace Web_Project.Service
         }
 
 
-        //public async Task<HttpResponseMessage> UpdateEmployee(int id, EmployeeDataModel model)
+        public async Task<HttpResponseMessage> UpdateEmployee(int id, EmployeeDataModel model)
+        {
+            using var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync($"https://localhost:44387/api/Employee", content);
+
+            return response;
+        }
+
+        //public RestResponse UpdateEmployee( EmployeeDataModel employee)
         //{
-        //    using var client = new HttpClient();
-        //    var json = JsonConvert.SerializeObject(model);
+        //    RestRequest request = new RestRequest("https://localhost:44387/api/Employee");
+        //    var json = JsonConvert.SerializeObject(employee);
         //    var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //    var response = await client.PutAsync($"https://localhost:44387/api/Employee/{id}", content);
-
+        //    RestResponse response = _client.Execute(request);
         //    return response;
+
+
         //}
-        //public async Task<HttpResponseMessage> DeleteEmployee(int id)
+        //public async Task<HttpResponseMessage> DeleteEmployee(EmployeeDataModel model)
         //{
         //    using var client = new HttpClient();
-        //    var response = await client.DeleteAsync($"https://localhost:44387/api/Employee/{id}");
+        //    var response = await client.DeleteAsync($"https://localhost:44387/api/Employee");
 
         //    return response;
         //}
 
+        public RestResponse DeleteEmployee(int id)
+        {
+            RestRequest request = new RestRequest($"https://localhost:44387/api/Employee/{id}", Method.Delete);
+            RestResponse response = _client.Execute(request);
+            return response;
+        }
 
 
 
-        // Custormer
+        // Custormer--------------------------------------------------------------
         public RestResponse CustormerList()
         {
             RestRequest request = new RestRequest("https://localhost:44387/api/Custormer");
+            RestResponse response = _client.Execute(request);
+            return response;
+        }
+
+        public RestResponse GetECustormer(int Custormerid)
+        {
+            RestRequest request = new RestRequest("https://localhost:44387/api/Custormer/{ustormerid}");
+            RestResponse response = _client.Execute(request);
+            return response;
+        }
+        //public async Task<HttpResponseMessage> GetEmployee(int employeeid)
+        //{
+        //    using var client = new HttpClient();
+        //    var response = await client.GetAsync($"https://localhost:44387/api/Custormer/{custormerid}");
+
+        //    return response;
+        //}
+        public async Task<HttpResponseMessage> CreateCustormer(customerDataModel model)
+        {
+            using var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("https://localhost:44387/api/Custormer", content);
+
+            return response;
+        }
+
+
+        public async Task<HttpResponseMessage> UpdateCustormer(int id, customerDataModel model)
+        {
+            using var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync($"https://localhost:44387/api/Custormer", content);
+
+            return response;
+        }
+
+        public RestResponse DeleteCustormer(int id)
+        {
+            RestRequest request = new RestRequest($"https://localhost:44387/api/Custormer/{id}", Method.Delete);
             RestResponse response = _client.Execute(request);
             return response;
         }

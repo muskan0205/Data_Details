@@ -17,6 +17,15 @@ namespace Web_Project.Controllers
     {
         public ActionResult Index()
         {
+          //if (Convert.ToBoolean(TempData["Admin"]) == true)
+          //  {
+          //      TempData["Employee"] = true;
+          //      TempData["Custormer"] = true;
+          //  }
+          //  else
+          //  {
+
+          //  }  
 
 
             return View();

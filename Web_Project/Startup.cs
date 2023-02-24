@@ -34,7 +34,12 @@ namespace Web_Project
 
             services.AddSingleton<IMyProjectService, MyProjectService>();
             services.AddSession();
-
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
             //services.AddAuthorization(options =>
             //{
             //    options.AddPolicy("PolicyName", policy => policy.RequireClaim("ClaimType", "ClaimValue"));

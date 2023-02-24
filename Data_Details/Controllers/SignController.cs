@@ -33,11 +33,11 @@ namespace Data_Details.Controllers
             using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
             {
                 // Check if the email address already exists in the database
-                var existingEmail = connection.Query<SignUp>("SELECT EmailID FROM dbo.sign_up WHERE EmailID = @EmailID",
-                    new { EmailID = signinfo.EmailID }).FirstOrDefault();
+                var existingEmail = connection.Query<SignUp>("SELECT EmailID ,role  FROM dbo.sign_up WHERE EmailID = @EmailID AND role=@role",
+                    new { EmailID = signinfo.EmailID, role = signinfo.role }).FirstOrDefault();
                 if (existingEmail != null)
                 {
-                    return BadRequest("The email address already exists");
+                    return BadRequest("The same combination of email address and role already exist");
                 }
 
                 var parameters = new DynamicParameters();
@@ -79,7 +79,8 @@ namespace Data_Details.Controllers
                 var parameters = new DynamicParameters();
                 parameters.Add("@EmailId", loginModel.EmailID, DbType.String);
                 parameters.Add("@Password", loginModel.Password, DbType.String);
-                
+                parameters.Add("@role", loginModel.role, DbType.String);
+
 
                 connection.Open();
 
@@ -91,18 +92,18 @@ namespace Data_Details.Controllers
                 // Check if the stored procedure was successful
                 if (LoginResult == "Successful Login")
                 {
-                    var role = connection.ExecuteScalar("SELECT role FROM dbo.sign_up WHERE EmailID = @EmailID", new { EmailID = loginModel.EmailID }).ToString();
-                    if (role == "Employee")
+                    //var role = connection.ExecuteScalar("SELECT role FROM dbo.sign_up WHERE EmailID = @EmailID", new { EmailID = loginModel.EmailID }).ToString();
+                    if (loginModel.role == "Employee")
                     {
                         connection.Close();
                         return Ok("Employee");
                     }
-                    else if (role == "Custormer")
+                    else if (loginModel.role == "Customer")
                     {
                         connection.Close();
-                        return Ok("Custormer");
+                        return Ok("Customer"); 
                     }
-                    else if (role == "Admin")
+                    else if (loginModel.role == "Admin")
                     {
                         connection.Close();
 

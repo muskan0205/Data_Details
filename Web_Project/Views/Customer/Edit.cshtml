@@ -1,0 +1,96 @@
+﻿@model Data_Details.Models.customerDataModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    TempData["Custormer"] = true;
+}
+
+@if (TempData["error-message-81"] != null)
+{
+    <div id="error-message-81" class="alert alert-danger">
+        @TempData["error-message-81"].ToString()
+    </div>
+}
+@if (TempData["error-message-82"] != null)
+{
+    <div id="error-message-82" class="alert alert-danger">
+        @TempData["error-message-82"].ToString()
+    </div>
+}
+@if (TempData["error-message-83"] != null)
+{
+    <div id="error-message-51" class="alert alert-danger">
+        @TempData["error-message-83"].ToString()
+    </div>
+}
+@if (TempData["error-message-84"] != null)
+{
+    <div id="error-message-51" class="alert alert-danger">
+        @TempData["error-message-84"].ToString()
+    </div>
+}
+<h1>Edit</h1>
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="id" class="control-label">Id</label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="First_name" class="control-label">First Name</label>
+                <input asp-for="First_name" class="form-control" required />
+                <span asp-validation-for="First_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Last_name" class="control-label">Last Name</label>
+                <input asp-for="Last_name" class="form-control" required />
+                <span asp-validation-for="Last_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <div>
+                    <label>
+                        <input type="radio" asp-for="gender" value="Male" checked="@Model.gender == " Male"" />
+                        Male
+                    </label>
+
+                    <label>
+                        <input type="radio" asp-for="gender" value="Female" checked="@Model.gender == " Female"" />
+                        Female
+                    </label>
+                </div>
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product_name" class="control-label">Product Name</label>
+                <input asp-for="Product_name" class="form-control" required />
+                <span asp-validation-for="Product_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Price</label>
+                <input asp-for="Price"  type="number"  class="form-control" required />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

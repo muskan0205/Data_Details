@@ -16,10 +16,23 @@ namespace Web_Project.Interface
         public RestResponse CustormerList();
 
         Task<HttpResponseMessage> CreateEmployee(EmployeeDataModel model);
-        
+
+        public RestResponse GetEmployee(int employeeid);
         // Task<HttpResponseMessage> GetEmployee(int id);
-        // Task<HttpResponseMessage> UpdateEmployee(int id, EmployeeDataModel model);
-        // Task<HttpResponseMessage> DeleteEmployee(int id);
+        Task<HttpResponseMessage> UpdateEmployee(int id, EmployeeDataModel model);
+       // public RestResponse UpdateEmployee(EmployeeDataModel employee);
+        public RestResponse DeleteEmployee(int id);
+        // Task<HttpResponseMessage> DeleteEmployee(EmployeeDataModel model);
+        //Task<HttpResponseMessage> DeleteEmployee(int employeeid);
+        // Task UpdateEmployee(int id, StringContent content);
         //Task UpdateEmployee(int id, StringContent content);
+
+
+        public RestResponse GetECustormer(int Custormerid);
+
+        Task<HttpResponseMessage> CreateCustormer(customerDataModel model);
+        Task<HttpResponseMessage> UpdateCustormer(int id, customerDataModel model);
+
+        public RestResponse DeleteCustormer(int id);
     }
 }

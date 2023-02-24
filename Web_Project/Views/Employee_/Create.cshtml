@@ -1,0 +1,128 @@
+﻿@model Data_Details.Models.EmployeeDataModel
+
+    <html>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="~/js/site.js"></script>
+
+
+        @{
+            ViewData["Title"] = "Create";
+        }
+
+        @if (TempData["error-message-20"] != null)
+        {
+            <div id="error-message-20" class="alert alert-danger">
+                @TempData["error-message-20"].ToString()
+            </div>
+        }
+        @if (TempData["error-message-21"] != null)
+        {
+            <div id="error-message-21" class="alert alert-danger">
+                @TempData["error-message-21"].ToString()
+            </div>
+        }
+        @if (TempData["error-message-22"] != null)
+        {
+            <div id="error-message-22" class="alert alert-danger">
+                @TempData["error-message-22"].ToString()
+            </div>
+        }
+        @if (TempData["error-message-23"] != null)
+        {
+            <div id="error-message-23" class="alert alert-danger">
+                @TempData["error-message-23"].ToString()
+            </div>
+        }
+        @if (TempData["error-message-24"] != null)
+        {
+            <div id="error-message-24" class="alert alert-danger">
+                @TempData["error-message-24"].ToString()
+            </div>
+        }
+        @*@if (TempData["error-message"] != null)
+        {
+            <div class="alert alert-danger">@TempData["error-message"].ToString()</div>
+            <script>
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        $('.alert-success').fadeOut('fast');
+                    }, 2000); // 2 seconds
+                });
+            </script>
+        }
+        @if (TempData["Sucess-message"] != null)
+        {
+            <div class="alert alert-success">@TempData["Sucess-message"].ToString()</div>
+            <script>
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        $('.alert-success').fadeOut('fast');
+                    }, 2000); // 2 seconds
+                });
+            </script>
+        }*@
+
+
+        <h1>Create</h1>
+
+      
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form id="employee-form" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*<div class="form-group">
+                        <label asp-for="id" class="control-label"></label>
+                        <input asp-for="id" class="form-control" required />
+                        <span asp-validation-for="id" class="text-danger" id="id-validation-1">
+
+                        </span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="First_name" class="control-label">First Name</label>
+                        <input asp-for="First_name" class="form-control" required data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed." />
+                        <span asp-validation-for="First_name" class="text-danger" id="id-validation-2"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Last_name" class="control-label">Last Name</label>
+                        <input asp-for="Last_name" class="form-control" required  data-val-regex-pattern="^(?!\s*$).+" data-val-regex="Spaces are not allowed."/>
+                        <span asp-validation-for="Last_name" class="text-danger" id="id-validation-3"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Gender</label>
+                        <div>
+                            <label>
+                                <input type="radio" asp-for="gender" value="Male" />
+                                Male
+                            </label>
+
+                            <label>
+                                <input type="radio" asp-for="gender" value="Female" />
+                                Female
+                            </label>
+                        </div>
+                        <span asp-validation-for="gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Salary" class="control-label">Salary</label>
+                        <input asp-for="Salary" type="number" min="1000" class="form-control" required />
+                        <span asp-validation-for="Salary" class="text-danger" id="id-validation-5"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+        }
+    </body>
+</html>
